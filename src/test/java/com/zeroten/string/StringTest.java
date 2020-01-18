@@ -254,4 +254,20 @@ public class StringTest {
         long end2 = System.currentTimeMillis();
         System.out.println(String.format("耗时 %d ms", (end2 - start2)));
     }
+
+    @Test
+    public void testString() {
+        String str1 = "hello, world!";
+        String str2 = "hello";
+        str2 += ", world!";
+        String str3 = "hello," + " world!";
+        String str4 = str2.intern();
+
+        System.out.println(str1 == str2);//false
+        System.out.println(str1 == str3);//true
+        System.out.println(str1 == str4);//true
+        System.out.println(str2 == str3);//false
+        System.out.println(str2 == str4);//false
+
+    }
 }
