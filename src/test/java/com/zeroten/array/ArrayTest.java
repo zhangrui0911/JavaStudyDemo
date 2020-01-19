@@ -93,4 +93,34 @@ public class ArrayTest {
             }
         });
     }
+
+
+    @Test
+    public void testCopy() {
+        Integer[] arr1 = {1,2,3,4,5};
+        Integer[] arr2 = {6,7,8,9,10};
+
+        //拷贝数组arr1的前3个元素
+        Integer[] arr3 = Arrays.copyOf(arr1, 3);
+        System.out.println(Arrays.toString(arr3));
+
+        //拷贝数组 arr1 的后 3 位的元素以一个新的数组
+        //第一个参数要拷贝的原数组，第二个参数是开始拷贝的下标，第三个参数是拷贝到第几个元素，但不包括截止那个元素
+        //因为源码中是用第三个参数减第二个参数，做为新数组的长度
+        Integer[] arr11 = Arrays.copyOfRange(arr1, arr1.length - 3, arr1.length);
+        System.out.println(Arrays.toString(arr11));
+
+        //拷贝数组 arr1 的第 1 位到第 3 位的元素(不包括第3个)
+        Integer[] arr12 = Arrays.copyOfRange(arr1, 0, 2);
+        System.out.println(Arrays.toString(arr12));
+        //拷贝数组 arr2 的后 3 位到 arr1 到后 3 位
+        //参数一：要拷贝的源数组1
+        //参数二：要拷贝的开始位置坐标
+        //参数三：目标数组
+        //参数四：将拷贝的元素存放到目标数组的第几位开始
+        //参数五：拷贝的长度
+        System.arraycopy(arr2, arr2.length - 3, arr1, arr1.length - 3, 3);
+        System.out.println(Arrays.toString(arr1));
+
+    }
 }
