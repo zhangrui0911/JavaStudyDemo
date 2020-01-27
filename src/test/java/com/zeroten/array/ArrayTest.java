@@ -1,9 +1,11 @@
 package com.zeroten.array;
 
 import org.testng.annotations.Test;
+import sun.security.util.Length;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
 
 /**
  * @author Zr
@@ -123,4 +125,129 @@ public class ArrayTest {
         System.out.println(Arrays.toString(arr1));
 
     }
+
+    /**
+     * 定义一个大小为 10 的 int 数组， 并将数组全部初始化为指定的值 5，打印数组；
+     * 然后再将数组后 3 位赋值为 3，再次打印
+     */
+    @Test
+    public void testFill() {
+        int[] arr = new int[10];
+        /*for (int i = 0; i < arr.length; i++) {
+            arr[i] = 5;
+        }*/
+        //对数组的所有值进行赋值
+        Arrays.fill(arr, 5);
+
+        System.out.println(Arrays.toString(arr));
+
+/*        for (int i = arr.length - 3; i < arr.length; i++) {
+            arr[i] = 3;
+        }*/
+        //将数组中指定的位置替换成指定的值
+        Arrays.fill(arr, arr.length - 3, arr.length, 3);
+        System.out.println(Arrays.toString(arr));
+    }
+
+    /**
+     * 定义一个大小为100的int数组，
+     * 随机给每一位赋值一个0~100之间的数值，
+     * 然后对该数组进行排序
+     * 并打印结果
+     */
+    @Test
+    public void testSort() {
+        int[] arr = new int[100];
+
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] = new Random().nextInt(100);
+        }
+
+        Arrays.sort(arr);
+        System.out.println(Arrays.toString(arr));
+
+    }
+
+    /**
+     * 定义一个二维数组
+     * 第一维表示用户
+     * 第二维表示用户的具体信息（1.编码，2.姓名，3.性别，4.年龄）
+     * 定义赋值并打印
+     */
+    @Test
+    public void testDuoWeiShuZhu() {
+        String[][] users = new String[5][];
+        users[0] = new String[4];
+
+        users[0][0] = "001";
+        users[0][1] = "张三";
+        users[0][2] = "男";
+        users[0][3] = "23";
+
+        users[1] = new String[4];
+        users[1][0] = "002";
+        users[1][1] = "李四";
+        users[1][2] = "女";
+        users[1][3] = "30";
+
+        //使用for循环
+        /*for (int i = 0; i < users.length; i++) {
+            System.out.println(Arrays.toString(users[i]));
+        }*/
+
+        //使用for each
+        /*for (String[] user : users) {
+            System.out.println(Arrays.toString(user));
+        }*/
+
+        //使用Leambda表达式打印
+        Arrays.asList(users).forEach(user -> System.out.println(Arrays.toString(user)));
+
+    }
+
+    /**
+     * 给定一个整数数组nums和一个目标值 target，请你在该数组中找出和为目标值的那两个整数，并返回他们的数组下标。
+     * 你可以假设每种输入只会对一个答案。但是，你不能重复利用这个数组中同样的元素。
+     * 给定： nums = [2,7,11,15]，target = 9
+     *
+     */
+    @Test
+    public void testTwoSum() {
+        int[] nums = {2,7,11,15};
+        int target = 9;
+
+        System.out.println(Arrays.toString(twoSum2(nums, target)));
+    }
+
+    public int[] twoSum(int[] nums, int target){
+        int[] result;
+        for(int index = 0; index < nums.length -1; index++){
+            for(int secondIndex = index + 1; secondIndex < nums.length; secondIndex++){
+                if(nums[index] + nums[secondIndex] == target){
+                    return new int[]{index, secondIndex};
+                }
+            }
+        }
+        return null;
+    }
+
+
+    public int[] twoSum2(int[] nums, int target){
+        System.out.println("传入数组：" + Arrays.toString(nums));
+        Arrays.sort(nums);
+        System.out.println("排序数组：" + Arrays.toString(nums));
+
+        for(int index = 0; index < nums.length - 1; index++){
+            for(int secondIndex = index + 1; secondIndex < nums.length; secondIndex++){
+                if(nums[index] < target){
+                    if(nums[index] + nums[secondIndex] == target){
+                        return new int[]{index, secondIndex};
+                    }
+                }
+            }
+        }
+
+        return null;
+    }
+
 }
