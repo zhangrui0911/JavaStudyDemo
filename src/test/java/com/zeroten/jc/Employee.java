@@ -6,7 +6,7 @@ import java.util.Date;
  * @author Zr
  * @create 2020-01-27 22:54
  */
-public class Employee {
+public class Employee implements java.lang.Cloneable{
 
     private String name;
     private Date hireDay;
@@ -59,5 +59,10 @@ public class Employee {
         temp.append(getSalary());
 
         System.out.println(temp.toString());
+    }
+
+    @Override
+    public Employee clone() throws CloneNotSupportedException {
+        return (Employee) super.clone();
     }
 }
