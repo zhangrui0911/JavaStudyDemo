@@ -29,5 +29,21 @@
             <version>7.0.0</version>
             <scope>test</scope>
         </dependency>
+
+<!--
+        <dependency>
+            <groupId>cglib</groupId>
+            <artifactId>cglib-nodep</artifactId>
+            <version>3.3.0</version>
+        </dependency>
+-->
+
+        <!-- 引⼊ spring-core 依赖 -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+            <version>5.2.2.RELEASE</version>
+        </dependency>
+
     </dependencies>
 </project>
