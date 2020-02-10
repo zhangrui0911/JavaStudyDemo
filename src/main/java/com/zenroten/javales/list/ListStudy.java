@@ -194,7 +194,45 @@ public class ListStudy {
     }
 
 
+    public static void listOpTime(List<Integer> list){
+        long start = System.currentTimeMillis();
+        int items = 200000;
 
+        //在第5位插入 10000 个 1
+        start = System.currentTimeMillis();
+        for (int i = 0; i < items; i++) {
+            list.add(4, 1);
+        }
+        System.out.printf("[%s] 第5位插入耗时 %dms\n", list.getClass().getSimpleName(), System.currentTimeMillis() - start);
+
+        //在末尾插入 10000 个 2
+        start = System.currentTimeMillis();
+        for (int i = 0; i < items; i++) {
+            list.add(1);
+        }
+        System.out.printf("[%s] 第末尾插入耗时 %dms\n", list.getClass().getSimpleName(), System.currentTimeMillis() - start);
+
+        //for循环遍历
+        for (int i = 0; i < list.size(); i++) {
+            list.get(i);
+        }
+        System.out.printf("[%s] for循环遍历耗时 %dms\n", list.getClass().getSimpleName(), System.currentTimeMillis() - start);
+
+        //Iterator
+        start = System.currentTimeMillis();
+        Iterator<Integer> iterator = list.iterator();
+        while (iterator.hasNext()) {
+            iterator.next();
+        }
+        System.out.printf("[%s] 迭代器循环遍历耗时 %dms\n", list.getClass().getSimpleName(), System.currentTimeMillis() - start);
+
+        //forEach
+        start = System.currentTimeMillis();
+        for (Integer integer : list) {
+
+        }
+        System.out.printf("[%s] forEach循环遍历耗时 %dms\n", list.getClass().getSimpleName(), System.currentTimeMillis() - start);
+    }
 
 
     public static void main(String[] args) {
