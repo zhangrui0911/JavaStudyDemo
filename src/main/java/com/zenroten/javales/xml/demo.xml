@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- 注释，XML的语义近似于面向对象，XML的编写没有固定套路 -->
+<types>
+<!--    <type t="S" h="&lt;165">
+    </type>
+    <type>
+        <t>S</t>
+        <h>&lt;165</h>
+    </type>
+    <type t="M">
+        <h>165&gt;&lt;170</h>
+    </type>
+ -->
+
+    <type t="S" minH="" maxH="165" p="cm">
+    </type>
+
+    <type t="M" p="cm">
+        <minH>165</minH>
+        <maxH>170</maxH>
+    </type>
+
+
+</types>
